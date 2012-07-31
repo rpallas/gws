@@ -1,25 +1,3 @@
-/* 
-Source file: opinionserver.js
-
----
-Copyright (c) 2012 All Right Reserved, C. A. Cois
-http://www.codehenge.net
-
-THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY 
-KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
-IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
-PARTICULAR PURPOSE.
-
-Node.js is an official trademark of Joyent. This software is not 
-formally related to or endorsed by the official Joyent Node.js open 
-source or commercial project.
-*/
-
-//*************
-// Express App
-//*************
-
-// We know how to write our own, but why not use express?
 var express = require('express');
 var app = express.createServer();
 
@@ -37,16 +15,21 @@ app.register('.html', {
   }
 });
 
+// routing
 app.get('/test', function(req, res){
 	res.send('Hello, World!');
 });
 
-app.get('/vote', function(req, res){
-    res.render('votingclient.html', { title: 'Voting Client' });
+app.get('/client', function(req, res){
+    res.render('gameclient.html', { title: 'Game Client' });
 });
 
-app.get('/chart', function(req, res){
+app.get('/game', function(req, res){
     res.render('livechartclient.html', { title: 'Live Chart Client' });
+});
+
+app.get('/rank', function(req, res){
+    res.render('rankclient.html', { title: 'Rankings Client' });
 });
 
 app.listen(8080);
@@ -74,7 +57,7 @@ io.sockets.on('connection', function(socket){
 	    console.log("Sending vote average to client " + socket.id);
 		var total = 0, ctr = 0;
 		for(var v in votes){
-			total += votes[v];
+		    total += votes[v];
 		    ctr++;
 		}
 		// return vote average to client

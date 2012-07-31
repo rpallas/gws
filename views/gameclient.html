@@ -9,22 +9,21 @@
   <body onload="connect()">   
 	
 	<script>
-	var socket;
-	
-	function connect() {
-	        socket = io.connect(null);
-
-	        socket.on('connect', function(){ $('#status').html('Connected to Server'); });
-	        socket.on('disconnect', function(){ $('#status').html('Disconnected form Server'); });
-	        socket.on('reconnect', function(){ $('#status').html('Reconnected to Server'); });
-	        socket.on('reconnecting', function( nextRetry ){ $('#status').html('Reconnecting in ' + nextRetry/1000 + ' seconds'); });
-	        socket.on('reconnect_failed', function(){ $('#status').html('Reconnect Failed'); });          
-	}
-	
-	function vote(v){
-	        socket.emit('vote', v);
-	}
+		var socket;
 		
+		function connect() {
+			socket = io.connect(null);
+
+			socket.on('connect', function(){ $('#status').html('Connected to Server'); });
+			socket.on('disconnect', function(){ $('#status').html('Disconnected form Server'); });
+			socket.on('reconnect', function(){ $('#status').html('Reconnected to Server'); });
+			socket.on('reconnecting', function( nextRetry ){ $('#status').html('Reconnecting in ' + nextRetry/1000 + ' seconds'); });
+			socket.on('reconnect_failed', function(){ $('#status').html('Reconnect Failed'); });          
+		}
+		
+		function vote(v){
+			socket.emit('vote', v);
+		}
 	</script>
 	
     <h1>Game Client</h1>
