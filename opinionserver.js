@@ -49,7 +49,8 @@ app.get('/chart', function(req, res){
     res.render('livechartclient.html', { title: 'Live Chart Client' });
 });
 
-app.listen(8080);
+app.listen(process.env.PORT, process.env.IP);
+//app.listen(8080);
 
 //*********************
 // Socket.io Functions
