@@ -28,16 +28,12 @@ app.get('/game', function(req, res){
     res.render('livechartclient.html', { title: 'Live Chart Client' });
 });
 
-<<<<<<< HEAD
 app.get('/rank', function(req, res){
     res.render('rankclient.html', { title: 'Rankings Client' });
 });
 
-app.listen(8080);
-=======
 app.listen(process.env.PORT, process.env.IP);
 //app.listen(8080);
->>>>>>> 628b9d9a8d66e126bd0af5ac3949db595717f04f
 
 //*********************
 // Socket.io Functions
