@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-    <title>Live Chart Client</title>
+    <title>Average score chart</title>
         
     <script src="/socket.io/lib/socket.io.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
@@ -23,7 +23,7 @@
 	                marginBottom: 25
 	            },
 	            title: {
-	                text: 'Live Poll',
+	                text: 'Average score',
 	            },
 	            xAxis: {
 	                type: 'datetime',
@@ -32,7 +32,7 @@
 	            },
 	            yAxis: {
 	                title: {
-	                text: 'Average Vote (1-5)'
+	                text: 'Average Score (1-5)'
 	                },
 	                minPadding: 0.2,
 	                maxPadding: 0.2,
@@ -40,7 +40,7 @@
 	                max: 5
 	            },
 	            series: [{
-	                name: 'Live Poll Data',
+	                name: 'Average Score Data',
 	                color: '#F50F35',
 	                data: []
 	            }]
@@ -78,8 +78,8 @@
 	
     </script>
     
-    <h1>Live Poll Chart</h1>
-    <div><p id="status">Waiting for input</p></div>
+    <h1>Average score chart</h1>
+    <div><p id="status">Waiting for scores</p></div>
 	<div id="container" style="width: 100%; height: 400px"></div>
   </body>
 </html>

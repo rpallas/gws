@@ -16,15 +16,15 @@ app.register('.html', {
 });
 
 // routing
-app.get('/test', function(req, res){
-	res.send('Hello, World!');
+app.get('/', function(req, res){
+	res.send('Welcome to Game Web Services!');
 });
 
 app.get('/client', function(req, res){
     res.render('gameclient.html', { title: 'Game Client' });
 });
 
-app.get('/game', function(req, res){
+app.get('/chart', function(req, res){
     res.render('livechartclient.html', { title: 'Live Chart Client' });
 });
 
@@ -75,9 +75,9 @@ io.sockets.on('connection', function(socket){
 
 print_votes = function(){
     var total = 0;
-	console.log("\nVotes:");
+	console.log("\nScore:");
     for(var v in votes){
-        console.log("\tvotes[" + v + "] = " + votes[v]);
+        console.log("\tScores[" + v + "] = " + votes[v]);
     }
 	console.log("\n");
 }
