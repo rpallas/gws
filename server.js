@@ -17,51 +17,51 @@ app.register('.html', {
 
 // routing
 app.get('/', function(req, res){
-	res.send('Welcome to Game Web Services!');
+	res.render('index.html', { title: 'Game Web Services' });
 });
 
 app.get('/client', function(req, res){
     res.render('gameclient.html', { title: 'Game Client' });
 });
 
-app.get('/chart', function(req, res){
-    res.render('livechartclient.html', { title: 'Live Chart Client' });
+app.get('/averages', function(req, res){
+    res.render('averagesclient.html', { title: 'Average Scores Client' });
 });
 
 app.get('/rank', function(req, res){
     res.render('rankclient.html', { title: 'Rankings Client' });
 });
 
-app.listen(process.env.PORT, process.env.IP);
-//app.listen(8080);
+//app.listen(process.env.PORT, process.env.IP);
+app.listen(8080);
 
 //*********************
 // Socket.io Functions
 //*********************
 
 var io = require('socket.io').listen(app);
-var votes = new Array();
+var scores = new Array();
 
 // on a 'connection' event
 io.sockets.on('connection', function(socket){
 
     console.log("Connection " + socket.id + " accepted.");
     
-	socket.on('vote', function(vote){
-	    // record vote
-	    console.log("Client " + socket.id + " voted " + vote);
-		votes[socket.id] = vote;
-		print_votes();
+	socket.on('score', function(score){
+	    // record score
+	    console.log("Client " + socket.id + " scored " + score);
+		scores[socket.id] = score;
+		print_scores();
 	});
     
 	socket.on('ticker', function(fn){
-	    console.log("Sending vote average to client " + socket.id);
+	    console.log("Sending score average to client " + socket.id);
 		var total = 0, ctr = 0;
-		for(var v in votes){
-		    total += votes[v];
+		for(var score in scores){
+		    total += scores[score];
 		    ctr++;
 		}
-		// return vote average to client
+		// return score average to client
 		var average = total/ctr;
 		console.log("Average: " + total + "/" + ctr + " = " + average);
 		fn(average);
@@ -73,11 +73,11 @@ io.sockets.on('connection', function(socket){
     
 });
 
-print_votes = function(){
+print_scores = function(){
     var total = 0;
 	console.log("\nScore:");
-    for(var v in votes){
-        console.log("\tScores[" + v + "] = " + votes[v]);
+    for(var score in scores){
+        console.log("\tScores[" + score + "] = " + scores[score]);
     }
 	console.log("\n");
 }

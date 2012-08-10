@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Game Client</title>
-	<link rel="stylesheet" type="text/css" href="/votingclient.css"></link>
+	<link rel="stylesheet" type="text/css" href="/site.css"></link>
 	<script src="/socket.io/lib/socket.io.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   </head>
@@ -21,17 +21,17 @@
 			socket.on('reconnect_failed', function(){ $('#status').html('Reconnect Failed'); });          
 		}
 		
-		function vote(v){
-			socket.emit('vote', v);
+		function score(v){
+			socket.emit('score', v);
 		}
 	</script>
 	
     <h1>Game Client</h1>
     <div><p id="status">Waiting for input</p></div>
-    <button id="vote" class="myButton" onClick='vote(1)'/>Scored 1</button><br>
-    <button id="vote" class="myButton" onClick='vote(2)'/>Scored 2</button><br>
-    <button id="vote" class="myButton" onClick='vote(3)'/>Scored 3</button><br>
-    <button id="vote" class="myButton" onClick='vote(4)'/>Scored 4</button><br>
-    <button id="vote" class="myButton" onClick='vote(5)'/>Scored 5</button>
+    <button id="score" class="myButton" onClick='score(1)'/>Scored 1</button><br>
+    <button id="score" class="myButton" onClick='score(2)'/>Scored 2</button><br>
+    <button id="score" class="myButton" onClick='score(3)'/>Scored 3</button><br>
+    <button id="score" class="myButton" onClick='score(4)'/>Scored 4</button><br>
+    <button id="score" class="myButton" onClick='score(5)'/>Scored 5</button>
   </body>
 </html>

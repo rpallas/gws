@@ -67,15 +67,15 @@
 					t = d.getTime(),
 				    point = [t,data],
 					shift = chart.series[0].data.length > 20; // shift if the series is longer than 20
-				
+
 				// add the point
 				chart.series[0].addPoint(point, true, shift);
 				});
 		}
-	    
+
 		setTimeout(ticker, 1000);
 	}
-	
+
     </script>
     
     <h1>Average score chart</h1>
