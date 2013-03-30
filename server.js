@@ -40,7 +40,7 @@ app.listen(8080);
 //*********************
 
 var io = require('socket.io').listen(app);
-var scores = new Array();
+var scores = [];
 
 // on a 'connection' event
 io.sockets.on('connection', function(socket){
@@ -80,6 +80,6 @@ print_scores = function(){
         console.log("\tScores[" + score + "] = " + scores[score]);
     }
 	console.log("\n");
-}
+};
 
 
