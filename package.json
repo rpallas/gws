@@ -7,8 +7,9 @@
     "type": "git",
     "url": "https://github.com/rpallas/gws.git"
   },
-  "dependencies" : {
-    "express"   :  "2.5.11",
-    "socket.io" :  "0.9.8"
+  "dependencies": {
+    "express": "2.5.11",
+    "socket.io": "0.9.8",
+    "forever-monitor": "~1.2.2"
   }
 }
